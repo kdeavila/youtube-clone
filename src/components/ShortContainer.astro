@@ -1,0 +1,33 @@
+---
+import DotsVertical from "@icons/DotsVertical.astro";
+import type { ShortType } from "../types/ShortType";
+
+const { title, thumbnailSrc } = Astro.props as ShortType;
+---
+
+<article
+    class="relative w-z p-2 flex flex-col justify-end rounded-xl overflow-hidden aspect-[9/16] cursor-pointer"
+>
+    <div class="w-full z-20">
+        <h3
+            class="text-neutral-100 text-pretty text-sm font-normal leading-snug line-clamp-3"
+        >
+            {title}
+        </h3>
+
+        <button
+            class="absolute top-0 right-0 -translate-x-1 translate-y-1 flex items-center justify-center size-9 rounded-full shrink-0 hover:bg-neutral-400/30 transition-colors duration-150"
+        >
+            <DotsVertical />
+        </button>
+    </div>
+
+    <div class={`absolute inset-0 w-full h-full z-0`}>
+        <img class="w-full h-full" src={thumbnailSrc} alt="Thumbnail short" />
+    </div>
+
+    <div
+        class="absolute inset-0 w-full h-full z-10 bg-gradient-to-t from-neutral-950/60 to-transparent"
+    >
+    </div>
+</article>

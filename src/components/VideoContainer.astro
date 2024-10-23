@@ -1,0 +1,76 @@
+---
+interface ThumbnailVideoProps {
+    thumbnailSrc: string;
+    videoSrc: string;
+    channelImage: string;
+    channelName: string;
+    videoTitle: string;
+    views: string;
+    uploadDate: string;
+}
+
+const {
+    thumbnailSrc,
+    videoSrc,
+    channelImage,
+    videoTitle,
+    channelName,
+    views,
+    uploadDate,
+} = Astro.props as ThumbnailVideoProps;
+---
+
+<a href={`#video-${channelName}`}>
+    <div class="relative group w-full min-h-32 xs:rounded-lg overflow-hidden">
+        <img
+            src={thumbnailSrc}
+            alt="Video thumbnail"
+            class="w-full h-auto object-cover transition-opacity duration-300"
+        />
+
+        <video
+            src={videoSrc}
+            muted
+            loop
+            class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100 video-container"
+        ></video>
+    </div>
+
+    <div class="flex gap-3 p-3">
+        <div class="size-10 rounded-full overflow-hidden aspect-square shrink-0">
+            <img
+                class="block w-full h-full object-cover"
+                src={channelImage}
+                alt={`Image ${channelName}'s profile`}
+            />
+        </div>
+
+        <div>
+            <h4 class="font-semibold text-sm line-clamp-2 leading-snug m-0">
+                {videoTitle}
+            </h4>
+
+            <span class="text-xs text-neutral-400">
+                {`${channelName} · ${views} vistas · uploaded ${uploadDate}`}
+            </span>
+        </div>
+    </div>
+</a>
+
+<script>
+    // Selecciona todos los videos con la clase 'video-container'
+    const videos = document.querySelectorAll(".video-container");
+
+    videos.forEach((video) => {
+        const videoElement = video as HTMLVideoElement;
+
+        videoElement.addEventListener("mouseenter", () => {
+            videoElement.play();
+        });
+
+        videoElement.addEventListener("mouseleave", () => {
+            videoElement.pause();
+            videoElement.currentTime = 0;
+        });
+    });
+</script>

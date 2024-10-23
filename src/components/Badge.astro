@@ -1,0 +1,14 @@
+---
+interface BadgeProps {
+    title: "string";
+    isActive: "boolean";
+}
+
+const { title, isActive } = Astro.props as BadgeProps;
+---
+
+<button
+    class={`w-full text-sm font-semibold text-nowrap rounded-lg py-2 px-4 border-none ${isActive ? "bg-neutral-100 text-neutral-950" : "bg-neutral-800"}`}
+>
+    {title}
+</button>

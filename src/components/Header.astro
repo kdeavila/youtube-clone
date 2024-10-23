@@ -1,0 +1,90 @@
+---
+import Compass from "@icons/Compass.astro";
+import Search from "@icons/Search.astro";
+import Youtube from "@icons/Youtube.astro";
+import Badge from "@components/Badge.astro";
+
+const BADGES = [
+    {
+        title: "Todos",
+        isActive: true,
+    },
+    {
+        title: "Programación",
+        isActive: false,
+    },
+    {
+        title: "Podcasts",
+        isActive: false,
+    },
+    {
+        title: "Videojuegos",
+        isActive: false,
+    },
+    {
+        title: "Mixes",
+        isActive: false,
+    },
+    {
+        title: "Arte marcial",
+        isActive: false,
+    },
+    {
+        title: "En tiempo real",
+        isActive: false,
+    },
+    {
+        title: "Hardware",
+        isActive: false,
+    },
+    {
+        title: "Álgebra",
+        isActive: false,
+    },
+];
+---
+
+<header class="mt-28">
+    <!-- Mobile Header -->
+    <div
+        class="fixed top-0 left-0 right-0 w-full bg-neutral-950/90 backdrop-blur text-neutral-100 z-[100]"
+    >
+        <div
+            class="flex items-center justify-between p-3 border-b border-neutral-700"
+        >
+            <a class="h-5" href="/">
+                <Youtube />
+            </a>
+
+            <div class="flex gap-6">
+                <Search />
+                <div class="size-6 rounded-full overflow-hidden">
+                    <img
+                        class="block w-full h-full object-cover"
+                        src="/channel-profile.jpg"
+                        alt="Channel profile picture"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6 p-3 overflow-x-auto border-b border-neutral-700">
+            <button class="border-none bg-neutral-800 py-1 px-2">
+                <Compass />
+            </button>
+
+            <nav class="inline-flex items-center justify-center gap-3">
+                {
+                    BADGES.map((badge) => {
+                        return (
+                            <Badge
+                                title={badge.title}
+                                isActive={badge.isActive}
+                            />
+                        );
+                    })
+                }
+            </nav>
+        </div>
+    </div>
+</header>

@@ -44,13 +44,15 @@ const BADGES = [
 ];
 ---
 
-<header class="mt-28">
+<header class="mt-24">
     <!-- Mobile Header -->
     <div
-        class="fixed top-0 left-0 right-0 w-full bg-neutral-950/90 backdrop-blur text-neutral-100 z-[100]"
+        id="header"
+        class="fixed top-0 left-0 right-0 w-full transition-transform text-neutral-100 z-[100]"
     >
         <div
-            class="flex items-center justify-between p-3 border-b border-neutral-700"
+            id="navbar"
+            class="relative flex items-center justify-between p-3 border-b border-neutral-700 bg-neutral-950/80 backdrop-blur-md transition-transform duration-300 z-[99]"
         >
             <a class="h-5" href="/">
                 <Youtube />
@@ -68,12 +70,15 @@ const BADGES = [
             </div>
         </div>
 
-        <div class="flex items-center gap-6 py-2 px-3 overflow-x-auto border-b border-neutral-700">
+        <div
+            id="sub-navbar"
+            class="relative flex gap-6 py-2 px-3 overflow-x-auto snap-x border-b border-neutral-700 bg-neutral-950/80 backdrop-blur-md transition-transform duration-300 delay-100 z-[98]"
+        >
             <button class="border-none bg-neutral-800 py-1 px-2">
                 <Compass />
             </button>
 
-            <nav class="inline-flex items-center justify-center gap-3">
+            <nav class="flex justify-center gap-3">
                 {
                     BADGES.map((badge) => {
                         return (
@@ -88,3 +93,30 @@ const BADGES = [
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let lastScrollTop = 0;
+        const header = document.getElementById("header");
+        const navbar = document.getElementById("navbar");
+        const subNavbar = document.getElementById("sub-navbar");
+
+        if (header && navbar && subNavbar) {
+            window.addEventListener("scroll", function () {
+                const scrollTop = document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop) {
+                    header.style.transform = "translateY(-100%)";
+                    navbar.style.transform = "translateY(-100%)";
+                    subNavbar.style.transform = "translateY(-200%)";
+                } else {
+                    header.style.transform = "translateY(0%)";
+                    navbar.style.transform = "translateY(0%)";
+                    subNavbar.style.transform = "translateY(0%)";
+                }
+
+                lastScrollTop = scrollTop;
+            });
+        }
+    });
+</script>

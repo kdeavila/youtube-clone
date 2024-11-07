@@ -5,7 +5,8 @@ interface Props {
 
 const { title } = Astro.props;
 import "@fontsource-variable/inter";
-import Header from "../components/Header.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <!doctype html>
@@ -21,9 +22,10 @@ import Header from "../components/Header.astro";
 		<title>{title}</title>
 	</head>
 
-	<Header />
 	<body>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 
 	<style is:global>

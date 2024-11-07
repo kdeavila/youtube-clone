@@ -1,0 +1,44 @@
+---
+import Home from "@icons/Home.astro";
+import ShortsOutline from "@icons/ShortsOutline.astro";
+import Subs from "@icons/Subs.astro";
+import Library from "@icons/Library.astro";
+---
+
+<footer
+    class="fixed bottom-0 left-0 right-0 w-full bg-neutral-950/80 backdrop-blur-md text-neutral-100 z-[100]"
+>
+    <nav class="w-full grid grid-cols-4 border-t border-neutral-700">
+        <a href="#" class="flex flex-col items-center justify-center p-2">
+            <span class="col-span-1">
+                <Home />
+            </span>
+
+            <span class="text-[11px] line-clamp-1">Principal</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center justify-center p-2">
+            <span class="col-span-1">
+                <ShortsOutline />
+            </span>
+
+            <span class="text-[11px] line-clamp-1">Shorts</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center justify-center p-2">
+            <span class="col-span-1">
+                <Subs />
+            </span>
+
+            <span class="text-[11px] line-clamp-1">Suscripciones</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center justify-center p-2">
+            <span class="col-span-1">
+                <Library />
+            </span>
+
+            <span class="text-[11px] line-clamp-1">Biblioteca</span>
+        </a>
+    </nav>
+</footer>

@@ -7,18 +7,28 @@ import { VIDEOS } from "@data/VideoData";
     class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xs:p-3"
 >
     {
-        VIDEOS.map((video) => {
-            return (
-                <VideoContainer
-                    thumbnailSrc={video.thumbnailSrc}
-                    videoSrc={video.videoSrc}
-                    channelImage={video.channelImage}
-                    channelName={video.channelName}
-                    videoTitle={video.videoTitle}
-                    views={video.views}
-                    uploadDate={video.uploadDate}
-                />
-            );
-        })
+        VIDEOS.map(
+            ({
+                thumbnailSrc,
+                videoSrc,
+                channelImage,
+                channelName,
+                videoTitle,
+                views,
+                uploadDate,
+            }) => {
+                return (
+                    <VideoContainer
+                        thumbnailSrc={thumbnailSrc}
+                        videoSrc={videoSrc}
+                        channelImage={channelImage}
+                        channelName={channelName}
+                        videoTitle={videoTitle}
+                        views={views}
+                        uploadDate={uploadDate}
+                    />
+                );
+            },
+        )
     }
 </section>
